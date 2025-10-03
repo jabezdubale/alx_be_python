@@ -10,7 +10,7 @@ class Book:
     def check_out(self):
         self.__is_checked_out = True
 
-    def check_in(self):
+    def return_book(self):
         self.__is_checked_out = False
 
 
@@ -24,13 +24,13 @@ class Library:
 
     def check_out_book(self, title):
         for book in self.__books:
-            if book.title == title and not book.is_checked_out():
+            if book.title == title and book.is_checked_out() is False:
                 book.check_out()
 
     def return_book(self, title):
         for book in self.__books:
-            if book.title == title and book.is_checked_out():
-                book.check_in()
+            if book.title == title and book.is_checked_out() is True:
+                book.return_book()
 
     def list_available_books(self):
         for book in self.__books:
